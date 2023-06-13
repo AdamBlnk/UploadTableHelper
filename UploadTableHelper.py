@@ -3,8 +3,9 @@ from scriptSelector import *
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QFileDialog, QTextEdit, QScrollArea, QComboBox
 from PyQt5.QtCore import Qt
 
+
 # Slot method to handle file selection
-def select_file():
+def SelectFile():
     options = QFileDialog.Options()
     options |= QFileDialog.DontUseNativeDialog
     fileDialog = QFileDialog()
@@ -22,8 +23,9 @@ def select_file():
     # save the whole path to window.filename
     window.filename = filename
 
+
 # Slot method that loads the script selected in the dropdown menu
-def confirmPress():
+def ConfirmPress():
     selection = dropdown.currentText()
 
     # if no file selected, return nothing and do nothing
@@ -36,8 +38,11 @@ def confirmPress():
             case "Add Text To Start Of Cell":
                 AddTextToCellBeginning(str(window.filename))
 
-            case "asda":
+            case "Placeholder Option":
                 return
+
+
+
 
 
 
@@ -45,10 +50,10 @@ def confirmPress():
 frontOfCell = scriptSelector("Add Text To Start Of Cell", "This script will add text to the front of a range of cells, such as ASSET IDs")
 
 # Add the scripts to a list
-scriptList = [frontOfCell] # More to be added
-
-
-
+scriptList = [frontOfCell] 
+# More to be added
+# More to be added
+# More to be added
 
 
 
@@ -93,10 +98,6 @@ hbox = QHBoxLayout()
 hbox.setAlignment(Qt.AlignTop)
 
 
-# BIG IMPORTANT HERE
-# YOU CREATE THE WHOLE HORIZONTAL ROW
-# THEN ADD THE ENTIRE ROW TO THE VERTICAL BOX.
-
 # Create the layout / add widgets here
 vbox.addWidget(filePathLabel)
 vbox.addWidget(fileSelectButton)
@@ -108,9 +109,10 @@ vbox.addWidget(actionLabel)
 vbox.addLayout(hbox)
 
 
+
 # Connect the clicked signal of button1 to the select_file slot
-fileSelectButton.clicked.connect(select_file)
-confirmButton.clicked.connect(confirmPress)
+fileSelectButton.clicked.connect(SelectFile)
+confirmButton.clicked.connect(ConfirmPress)
 
 
 

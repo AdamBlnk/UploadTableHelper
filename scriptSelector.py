@@ -42,9 +42,7 @@ def AddTextToCellBeginning(excelPath):
     scrollArea.setWidgetResizable(True)
     scrollArea.setWidget(textEdit)
 
-
-
-
+    # Grid to hold the Labels, Edits, and Buttons
     grid = QFormLayout()
     grid.addRow(cellLabel, cellEdit)
     grid.addRow(phraseLabel, phraseEdit)
