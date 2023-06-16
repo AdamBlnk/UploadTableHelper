@@ -1,5 +1,5 @@
-import re, sys, time
-from scriptSelector import *
+import re, sys, os
+from ScriptFiles.AddTextToStartOfCell import *
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QFileDialog, QTextEdit, QScrollArea, QComboBox
 from PyQt5.QtCore import Qt
 
@@ -9,6 +9,11 @@ def SelectFile():
     options = QFileDialog.Options()
     options |= QFileDialog.DontUseNativeDialog
     fileDialog = QFileDialog()
+
+    # Set default directory to open the folder that the script is running from
+    defaultDirectory = os.path.dirname(os.path.abspath(__file__))
+    fileDialog.setDirectory(defaultDirectory)
+
     filename, _ = fileDialog.getOpenFileName(window, "Select Excel File", "", "Excel Files (*.xlsx *.xls)", options=options)
 
     # if file actually chosen, do the thing
@@ -44,20 +49,6 @@ def ConfirmPress():
 
 
 
-
-
-# Declare the scripts to be listed
-frontOfCell = scriptSelector("Add Text To Start Of Cell", "This script will add text to the front of a range of cells, such as ASSET IDs")
-
-# Add the scripts to a list
-scriptList = [frontOfCell] 
-# More to be added
-# More to be added
-# More to be added
-
-
-
-
 # Create a QWidget as the main window
 app = QApplication(sys.argv)
 window = QWidget()
@@ -65,7 +56,7 @@ window.filename = ""
 
 # Create the dropdown of scripts, more to be added 
 dropdown = QComboBox()
-dropdown.addItem(scriptList[0].name)
+dropdown.addItem("Add Text To Start Of Cell")
 dropdown.addItem("Option 2")
 dropdown.addItem("Option 3")
 dropdown.addItem("Option 4")
